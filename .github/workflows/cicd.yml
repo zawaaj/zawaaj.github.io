@@ -1,0 +1,115 @@
+name: CI Build & Deploy
+
+on:
+  push:
+    branches:
+      - "4.x"
+
+jobs:
+  ci:
+    name: Lint & Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies (deterministic)
+        run: npm ci
+
+      # =========================
+      # Optional: Code Quality
+      # =========================
+      - name: Run ESLint
+        run: npx eslint "js/**/*.js"
+
+      - name: Run Stylelint
+        run: npx stylelint "css/**/*.css"
+
+      - name: Run HTMLHint
+        run: npx htmlhint "**/*.html"
+
+      - name: Check circular dependencies
+        run: npx madge --circular js
+
+      # =========================
+      # Build
+      # =========================
+      - name: Build project
+        run: npm run build
+
+      - name: Verify dist exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Build failed: dist folder not found"
+            exit 1
+          fi
+          echo "✅ dist generated"
+          ls -la dist
+
+  deploy:
+    name: Deploy to Netlify
+    needs: ci
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Verify dist exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ dist not found, aborting deploy"
+            exit 1
+          fi
+
+      - name: Create netlify.toml (headers)
+        run: |
+          cat <<EOF > netlify.toml
+          [[headers]]
+            for = "/*"
+            [headers.values]
+              Access-Control-Allow-Origin = "*"
+              Access-Control-Allow-Headers = "*"
+              Access-Control-Allow-Methods = "*"
+              Access-Control-Expose-Headers = "*"
+          EOF
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          netlify deploy \
+            --prod \
+            --dir=dist \
+            --telemetry-disable \
+            --site=$NETLIFY_SITE_ID \
+            --auth=$NETLIFY_AUTH_TOKEN
