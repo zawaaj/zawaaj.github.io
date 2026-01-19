@@ -332,10 +332,10 @@ export const comment = (() => {
             return;
         }
 
-        if (!gifIsOpen && form.value?.trim().length === 0) {
-            util.notify('Comments cannot be empty.').warning();
-            return;
-        }
+        // if (!gifIsOpen && form.value?.trim().length === 0) {
+        //     util.notify('Comments cannot be empty.').warning();
+        //     return;
+        // }
 
         if (form) {
             form.disabled = true;
@@ -455,10 +455,10 @@ export const comment = (() => {
         }
 
         const form = document.getElementById(`form-${id ? `inner-${id}` : 'comment'}`);
-        if (!gifIsOpen && form.value?.trim().length === 0) {
-            util.notify('Comments cannot be empty.').warning();
-            return;
-        }
+        // if (!gifIsOpen && form.value?.trim().length === 0) {
+        //     util.notify('Comments cannot be empty.').warning();
+        //     return;
+        // }
 
         if (!id && name && !session.isAdmin()) {
             name.disabled = true;
