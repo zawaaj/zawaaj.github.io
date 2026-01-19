@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="id" data-bs-theme="light">
+  <head>
+    <!-- Common Tag -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Undangan Pernikahan</title>
+
+    <!-- theme color mengikuti palette -->
+    <meta name="theme-color" content="#2F5D48" />
+
+    <!-- Fonts & deps (tetap) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" />
+
+    <!-- Bootstrap & FontAwesome tetap di-load -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css" crossorigin="anonymous" />
+
+    <!-- OVERRIDE CSS untuk palette "Pagi Zamrud" (letakkan BEFORE guest.css agar override berlaku) -->
+    <style>
+      :root{
+        /* Palette Pagi Zamrud */
+        --primary: #2F5D48;   /* hijau zamrud */
+        --secondary: #FBF6EE; /* krem pagi (bg) */
+        --accent: #C9A24D;    /* emas lembut */
+
+        /* Teks */
+        --text-body:  #16392F;
+        --text-head:  #0F2A23;
+        --text-muted: #6E7A70;
+        --on-primary: #FFFFFF;
+        --on-accent:  #2B2100;
+      }
+
+      /* Global */
+      html,body { height:100%; }
+      body {
+        margin:0;
+        font-family: "Josefin Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+        background: var(--secondary);
+        color: var(--text-body);
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+      }
+
+      /* Background image for desktop side (use the provided jpg) */
+      .slide-desktop img.bg-cover-home {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+      }
+
+      /* Use our created background image on main welcome/desktop panel */
+      .position-relative.bg-white-black {
+        background-image: url('./assets/images/bg-pagi-zamrud.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Hero / overlays */
+      .bg-overlay-auto {
+        background: linear-gradient(180deg, rgba(251,246,238,0.85), rgba(251,246,238,0.95));
+        backdrop-filter: blur(0.5px);
+      }
+
+      .bg-light-dark { background: transparent; color: var(--text-body); }
+      .bg-white-black { background: transparent; color: var(--text-body); }
+
+      /* Theme blocks */
+      .bg-theme-auto {
+        background: rgba(255,255,255,0.72);
+        color: var(--text-body);
+        border: 1px solid rgba(47,93,72,0.06);
+      }
+      .text-theme-auto { color: var(--text-head) !important; }
+
+      /* Buttons */
+      .btn-outline-auto {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: transparent;
+      }
+      .btn-outline-auto:hover, .btn-outline-auto:focus {
+        color: var(--on-primary);
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* Accent button for welcome/Open Invitation */
+      .btn-light-custom {
+        background: linear-gradient(90deg, var(--accent), rgba(201,162,77,0.85));
+        color: var(--on-accent);
+        border: none;
+        box-shadow: 0 6px 18px rgba(201,162,77,0.12);
+      }
+      .btn-light-custom i { color: rgba(255,255,255,0.95); }
+
+      /* SVG wave color */
+      .color-theme-svg { color: var(--primary); }
+
+      /* Images (profile/logo) */
+      .img-center-crop {
+        width: 9rem;
+        height: 9rem;
+        object-fit: cover;
+      }
+      .img-center-crop.rounded-circle {
+        border: 6px solid rgba(255,255,255,0.85);
+      }
+
+      /* Typo */
+      .font-esthetic { color: var(--text-head); }
+      .font-arabic { color: var(--text-head); font-family: "Josefin Sans", sans-serif; }
+
+      /* small / muted */
+      .text-secondary, small { color: var(--text-muted) !important; }
+
+      /* counters & pill */
+      .border.rounded-pill {
+        border-color: rgba(47,93,72,0.12) !important;
+      }
+
+      /* mouse animation */
+      .mouse-animation { border-color: rgba(47,93,72,0.12) !important; }
+      .scroll-animation { background: var(--primary); }
+
+      /* footer & cards */
+      .border.rounded-5.shadow {
+        border-color: rgba(47,93,72,0.06);
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; animation: none !important; }
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 575.98px) {
+        .img-center-crop { width: 7rem; height:7rem; }
+      }
+    </style>
+
+    <!-- original guest.css (kehilangan beberapa aturan yang di-override di atas) -->
+    <link rel="stylesheet" href="./css/guest.css" />
+  </head>
+
+  <body data-key="135e33e630106edccf611056a5f05322a4c79b78aaa548b71a" data-url="https://api-rifat.paha.my.id" data-audio="./assets/audio/Wedding Nasheed Muhammad Al Muqit.m4a" data-confetti="true" data-time="2026-02-01 09:00:00">
+    <!-- Root Invitation -->
+    <div class="row m-0 p-0 opacity-0" id="root">
+      <!-- Desktop mode -->
+      <div class="sticky-top vh-100 d-none d-sm-block col-sm-5 col-md-6 col-lg-7 col-xl-8 col-xxl-9 overflow-y-hidden m-0 p-0">
+        <div class="position-relative bg-white-black d-flex justify-content-center align-items-center vh-100">
+          <div class="d-flex position-absolute w-100 h-100">
+            <div class="position-relative overflow-hidden vw-100">
+              <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 1">
+                <!-- gunakan background jpg yang sudah dibuat -->
+                <img src="./assets/images/bg-pagi-zamrud.jpg" alt="bg" class="bg-cover-home" />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center p-4 bg-overlay-auto rounded-5">
+            <h2 class="font-esthetic mb-4" style="font-size: 2rem">Rifat &amp; Ulfa</h2>
+            <p class="m-0" style="font-size: 1rem">Ahad, 1 Februari 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smartphone mode (tidak banyak diubah, hanya warna teks dan background image dipakai otomatis dari CSS di atas) -->
+      <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 m-0 p-0">
+        <!-- Main Content -->
+        <main data-bs-spy="scroll" data-bs-target="#navbar-menu" data-bs-root-margin="25% 0% 0% 0%" data-bs-smooth-scroll="true" tabindex="0">
+          <!-- Home -->
+          <section id="home" class="bg-light-dark position-relative overflow-hidden p-0 m-0">
+            <!-- logo watermark dibawah teks -->
+            <img src="./assets/images/logo.png" alt="logo" class="position-absolute opacity-10 top-50 start-50 translate-middle bg-cover-home" style="width:250px; height:250px; object-fit:contain; filter:grayscale(0) contrast(.95);"/>
+
+            <div class="position-relative text-center bg-overlay-auto" style="background-color: unset">
+              <h1 class="font-esthetic pt-5 pb-4 fw-medium" style="font-size: 2.25rem">Undangan Pernikahan</h1>
+
+              <img
+                src="./assets/images/logo.png"
+                alt="logo"
+                onclick="undangan.guest.modal(this)"
+                class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
+              />
+
+              <h2 class="font-esthetic my-4" style="font-size: 2.25rem">Rifat &amp; Ulfa</h2>
+              <p class="my-2" style="font-size: 1.25rem">Ahad, 1 Februari 2026</p>
+
+              <button class="btn btn-outline-auto btn-sm shadow rounded-pill px-3 py-1" style="font-size: 0.825rem"><i class="fa-solid fa-calendar-check me-2"></i>Save Google Calendar</button>
+
+              <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
+                <div class="mouse-animation border border-secondary border-2 rounded-5 px-2 py-1 opacity-50">
+                  <div class="scroll-animation rounded-4 bg-secondary"></div>
+                </div>
+              </div>
+
+              <p class="pb-4 m-0 text-secondary" style="font-size: 0.825rem">Scroll Down</p>
+            </div>
+          </section>
+
+          <!-- ... sisa konten tetap; CSS variabel sudah mengubah warna teks, tombol, svg waves, card, dll ... -->
+
+        </main>
+
+        <!-- Navbar Bottom -->
+        <nav class="navbar navbar-expand sticky-bottom rounded-top-4 border-top p-0" id="navbar-menu">
+          <ul class="navbar-nav nav-justified w-100 align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">
+                <i class="fa-solid fa-house" style="color:var(--primary)"></i>
+                <span class="d-block" style="font-size: 0.7rem; color:var(--text-muted)">Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bride">
+                <i class="fa-solid fa-user-group" style="color:var(--primary)"></i>
+                <span class="d-block" style="font-size: 0.7rem; color:var(--text-muted)">Mempelai</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#wedding-date">
+                <i class="fa-solid fa-calendar-check" style="color:var(--primary)"></i>
+                <span class="d-block" style="font-size: 0.7rem; color:var(--text-muted)">Tanggal</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#comment">
+                <i class="fa-solid fa-comments" style="color:var(--primary)"></i>
+                <span class="d-block" style="font-size: 0.7rem; color:var(--text-muted)">Ucapan</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Welcome Page (ganti tombol open agar pakai accent) -->
+    <div class="loading-page bg-white-black" id="welcome" style="opacity: 0">
+      <div class="d-flex justify-content-center align-items-center vh-100 overflow-y-auto">
+        <div class="d-flex flex-column text-center">
+          <h2 class="font-esthetic mb-4" style="font-size: 2.25rem">The Wedding Of</h2>
+
+          <img src="./assets/images/logo.png" class="img-center-crop rounded-circle border border-3 border-light shadow mb-4 mx-auto" alt="logo" />
+
+          <h2 class="font-esthetic mb-4" style="font-size: 2.25rem">Rifat &amp; Ulfa</h2>
+          <div id="guest-name" data-message="Kepada Yth Bapak/Ibu/Saudara/i"></div>
+
+          <button type="button" class="btn btn-light-custom shadow rounded-4 mt-3 mx-auto" onclick="undangan.guest.open(this)">
+            <i class="fa-solid fa-envelope-open fa-bounce me-2"></i>Buka Undangan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- keep scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="./dist/guest.js"></script>
+  </body>
+</html>
