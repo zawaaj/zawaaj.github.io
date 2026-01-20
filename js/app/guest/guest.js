@@ -252,13 +252,13 @@ export const guest = (() => {
          */
         const formatDate = (d) => (new Date(d.replace(' ', 'T') + ':00Z')).toISOString().replace(/[-:]/g, '').split('.').shift();
 
-        const url = new URL('https://calendar.google.com/calendar/render');
+        const url = new URL('https://calendar.app.google/BLb4mjuasJrdtcoJ6');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'The Wedding of Wahyu and Riski',
-            dates: `${formatDate('2023-03-15 10:00')}/${formatDate('2023-03-15 11:00')}`,
-            details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa restu Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami.',
-            location: 'RT 10 RW 02, Desa Pajerukan, Kec. Kalibagor, Kab. Banyumas, Jawa Tengah 53191.',
+            text: 'Pernikahan Rifat dan Ulfa',
+            dates: `${formatDate('2026-02-01 09:00')}/${formatDate('2026-02-01 09:00')}`,
+            details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami. Jazaakumullāhu khayran. Semoga Allāh balaskan kebaikan.',
+            location: 'Masjid At-Tiin Asem Baris, Kebon Baru, Tebet, South Jakarta City, Jakarta, Indonesia',
             ctz: config.get('tz'),
         });
 
