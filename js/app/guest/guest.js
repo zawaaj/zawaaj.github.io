@@ -10,7 +10,7 @@ import { lang } from '../../common/language.js';
 import { storage } from '../../common/storage.js';
 import { session } from '../../common/session.js';
 import { offline } from '../../common/offline.js';
-import { comment } from '../components/comment.js';
+import { comment } from '../components/comments.js';
 import * as confetti from '../../libs/confetti.js';
 import { pool } from '../../connection/request.js';
 
