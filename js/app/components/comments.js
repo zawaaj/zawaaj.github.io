@@ -350,7 +350,7 @@ export const comment = (() => {
 
         const status = await request(HTTP_PUT, `/api/comment/${owns.get(id)}?lang=${lang.getLanguage()}`)
             .token(session.getToken())
-            .body(dto.updateCommentRequest(presence ? isPresent : null, gifIsOpen ? null : form.value, gifId))
+            .body(dto.updateCommentRequest(presence ? isPresent : null, gifIsOpen || form.value.trim().length === 0 ? null : form.value, gifId))
             .send(dto.statusResponse)
             .then((res) => res.data.status);
 
@@ -491,7 +491,7 @@ export const comment = (() => {
 
         const response = await request(HTTP_POST, `/api/comment?lang=${lang.getLanguage()}`)
             .token(session.getToken())
-            .body(dto.postCommentRequest(id, nameValue, isPresence, gifIsOpen ? null : form.value, gifId))
+            .body(dto.postCommentRequest(id, nameValue, isPresence, gifIsOpen || form.value.trim().length === 0 ? null : form.value, gifId))
             .send(dto.getCommentResponse);
 
         if (name) {
